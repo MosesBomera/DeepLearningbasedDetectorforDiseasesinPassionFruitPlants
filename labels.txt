@@ -1,1 +1,2 @@
-0  brownspot
+0  background
+1  brownspot
