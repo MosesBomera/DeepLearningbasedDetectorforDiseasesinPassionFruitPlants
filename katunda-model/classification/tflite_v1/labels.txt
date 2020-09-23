@@ -1,0 +1,4 @@
+background
+brownspot
+healthy
+woodiness
