@@ -1,3 +1,4 @@
+Background
 Fruit_BrownSpot
 Fruit_Healthy
 Fruit_Woodiness
