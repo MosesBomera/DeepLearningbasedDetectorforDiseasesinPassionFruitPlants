@@ -1,4 +1,12 @@
 #!/usr/bin/env python
+#
+# Prerequisite tutorials: aside from the basic Raspbian setup and
+# enabling the camera in raspi-config, you should configure WiFi (if
+# using wireless with the Dropbox upload feature) and read these:
+#
+# Written by Phil Burgess / Paint Your Dragon for Adafruit Industries.
+# BSD license, all text above must be included in any redistribution.
+
 import atexit
 import cPickle as pickle
 import errno
@@ -18,7 +26,9 @@ from time import sleep
 from threading import Timer
 
 
+
 # UI classes ---------------------------------------------------------------
+
 # Small resistive touchscreen is best suited to simple tap interactions.
 # Importing a big widget library seemed a bit overkill.  Instead, a couple
 # of rudimentary classes are sufficient for the UI elements:
@@ -36,6 +46,7 @@ class Icon:
             self.bitmap = pygame.image.load(iconPath + '/' + name + '.png')
         except:
             pass
+
 
 # Button is a simple tappable screen region.  Each has:
 #  - bounding rect ((X,Y,W,H) in pixels)
@@ -56,14 +67,14 @@ class Icon:
 class Button:
 
     def __init__(self, rect, **kwargs):
-        self.rect     = rect  # Bounds
-        self.color    = None  # Background fill color, if any
-        self.iconBg   = None  # Background Icon (atop color fill)
-        self.iconFg   = None  # Foreground Icon (atop background)
-        self.bg       = None  # Background Icon name
-        self.fg       = None  # Foreground Icon name
+        self.rect = rect  # Bounds
+        self.color = None  # Background fill color, if any
+        self.iconBg = None  # Background Icon (atop color fill)
+        self.iconFg = None  # Foreground Icon (atop background)
+        self.bg = None  # Background Icon name
+        self.fg = None  # Foreground Icon name
         self.callback = None  # Callback function
-        self.value    = None  # Value passed to callback
+        self.value = None  # Value passed to callback
         for key, value in kwargs.iteritems():
             if key == 'color':
                 self.color = value
@@ -205,7 +216,13 @@ def printit():
         Button((110, 60, 100, 120), bg='quit-ok', cb=quitCallback),
         Button((0, 10, 320, 35), bg='quit')]
         ]
+
     return buttons
+
+
+
+
+
 
 def isoCallback(n):  # Pass 1 (next ISO) or -1 (prev ISO)
     global isoMode
@@ -229,6 +246,7 @@ def fxCallback(n):  # Pass 1 (next effect) or -1 (prev effect)
 def quitCallback():  # Quit confirmation button
     saveSettings()
     raise SystemExit
+
 
 def viewCallback(n):  # Viewfinder buttons
     global loadIdx, scaled, screenMode, screenModePrior, settingMode, storeMode
@@ -280,6 +298,7 @@ def deleteCallback(n):  # Delete confirmation
             screenMode = 2
             scaled = None
             loadIdx = -1
+
 
 def storeModeCallback(n):  # Radio buttons on storage settings screen
     global storeMode
@@ -445,6 +464,7 @@ def spinner():
     buttons[screenMode][4].setBg(None)
     screenModePrior = -1  # Force refresh
 
+
 def takePicture():
     global busy, gid, loadIdx, saveIdx, scaled, sizeMode, storeMode, storeModePrior, uid
 
@@ -607,15 +627,15 @@ while (True):
     # Process touchscreen input
     while True:
         #batt = battRefresh()
-        # for s in buttons:  # For each screenful of buttons...
-        #     for b in s:  # For each button on screen...
-        #         for i in icons:  # For each icon...
-        #             if b.bg == i.name:  # Compare names; match?
-        #                 b.iconBg = i  # Assign Icon to Button
-        #                 b.bg = None  # Name no longer used; allow garbage collection
-        #             if b.fg == i.name:
-        #                 b.iconFg = i
-        #                 b.fg = None
+        for s in buttons:  # For each screenful of buttons...
+            for b in s:  # For each button on screen...
+                for i in icons:  # For each icon...
+                    if b.bg == i.name:  # Compare names; match?
+                        b.iconBg = i  # Assign Icon to Button
+                        b.bg = None  # Name no longer used; allow garbage collection
+                    if b.fg == i.name:
+                        b.iconFg = i
+                        b.fg = None
 
 
         for event in pygame.event.get():
@@ -630,6 +650,12 @@ while (True):
         # screenMode changes.
         if screenMode >= 3 or screenMode != screenModePrior: break
 
+
+
+
+
+
+
     # Refresh display
     if screenMode >= 3:  # Viewfinder or settings modes
         stream = io.BytesIO()  # Capture into in-memory stream
@@ -640,8 +666,8 @@ while (True):
         yuv2rgb.convert(yuv, rgb, sizeData[sizeMode][1][0],
                         sizeData[sizeMode][1][1])
         img = pygame.image.frombuffer(rgb[0:
-            (sizeData[sizeMode][1][0] * sizeData[sizeMode][1][1] * 3)],
-            sizeData[sizeMode][1], 'RGB')
+                                          (sizeData[sizeMode][1][0] * sizeData[sizeMode][1][1] * 3)],
+                                      sizeData[sizeMode][1], 'RGB')
     elif screenMode < 2:  # Playback mode or delete confirmation
         img = scaled  # Show last-loaded image
     else:  # 'No Photos' mode
@@ -651,8 +677,8 @@ while (True):
         screen.fill(0)
     if img:
         screen.blit(img,
-            ((320 - img.get_width()) / 2,
-            (240 - img.get_height()) / 2))
+                    ((320 - img.get_width()) / 2,
+                     (240 - img.get_height()) / 2))
 
     # Overlay buttons on display and update
     for i, b in enumerate(buttons[screenMode]):
