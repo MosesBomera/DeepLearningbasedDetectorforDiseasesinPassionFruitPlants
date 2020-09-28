@@ -109,95 +109,95 @@ class Button:
 # These are defined before globals because they're referenced by items in
 # the global buttons[] list.
 
-# def printit():
-#     global buttons
-#     t = threading.Timer(30.0, printit)
-#     t.daemon = True
-#     t.start()
-#
-#     buttons = [
-#     # Screen mode 0 is photo playback
-#         [Button((0, 188, 320, 52), bg='done', cb=doneCallback),
-#         Button((0, 0, 80, 52), bg='prev', cb=imageCallback, value=-1),
-#         Button((240, 0, 80, 52), bg='next', cb=imageCallback, value=1),
-#         Button((88, 70, 157, 102)),  # 'Working' label (when enabled)
-#         Button((148, 129, 22, 22)),  # Spinner (when enabled)
-#         Button((121, 0, 78, 52), bg='trash', cb=imageCallback, value=0)],
-#
-#         # Screen mode 1 is delete confirmation
-#         [Button((0, 35, 320, 33), bg='delete'),
-#         Button((32, 86, 120, 100), bg='yn', fg='yes',
-#             cb=deleteCallback, value=True),
-#         Button((168, 86, 120, 100), bg='yn', fg='no',
-#             cb=deleteCallback, value=False)],
-#
-#         # Screen mode 2 is 'No Images'
-#         [Button((0, 0, 320, 240), cb=doneCallback),  # Full screen = button
-#         Button((0, 188, 320, 52), bg='done'),  # Fake 'Done' button
-#         Button((0, 53, 320, 80), bg='empty')],  # 'Empty' message
-#
-#         # Screen mode 3 is viewfinder / snapshot
-#         [Button((0, 188, 156, 52), bg='gear', cb=viewCallback, value=0),
-#         Button((164, 188, 156, 52), bg='play', cb=viewCallback, value=1),
-#         #Button((270, 0, 50, 30), bg=batt, value=3),
-#         Button((0, 0, 320, 240), cb=viewCallback, value=2),
-#         Button((88, 51, 157, 102)),  # 'Working' label (when enabled)
-#         Button((148, 110, 22, 22))],  # Spinner (when enabled)
-#
-#         # Remaining screens are settings modes
-#
-#         # Screen mode 4 is storage settings
-#         [Button((0, 188, 320, 52), bg='done', cb=doneCallback),
-#         Button((0, 0, 80, 52), bg='prev', cb=settingCallback, value=-1),
-#         Button((240, 0, 80, 52), bg='next', cb=settingCallback, value=1),
-#         Button((2, 60, 100, 120), bg='radio3-1', fg='store-folder',
-#             cb=storeModeCallback, value=0),
-#         Button((110, 60, 100, 120), bg='radio3-0', fg='store-boot',
-#             cb=storeModeCallback, value=1),
-#         Button((218, 60, 100, 120), bg='radio3-0', fg='store-dropbox',
-#             cb=storeModeCallback, value=2),
-#         Button((0, 10, 320, 35), bg='storage')],
-#
-#         # Screen mode 5 is size settings
-#         [Button((0, 188, 320, 52), bg='done', cb=doneCallback),
-#         Button((0, 0, 80, 52), bg='prev', cb=settingCallback, value=-1),
-#         Button((240, 0, 80, 52), bg='next', cb=settingCallback, value=1),
-#         Button((2, 60, 100, 120), bg='radio3-1', fg='size-l',
-#             cb=sizeModeCallback, value=0),
-#         Button((110, 60, 100, 120), bg='radio3-0', fg='size-m',
-#             cb=sizeModeCallback, value=1),
-#         Button((218, 60, 100, 120), bg='radio3-0', fg='size-s',
-#             cb=sizeModeCallback, value=2),
-#         Button((0, 10, 320, 29), bg='size')],
-#
-#         # Screen mode 6 is graphic effect
-#         [Button((0, 188, 320, 52), bg='done', cb=doneCallback),
-#         Button((0, 0, 80, 52), bg='prev', cb=settingCallback, value=-1),
-#         Button((240, 0, 80, 52), bg='next', cb=settingCallback, value=1),
-#         Button((0, 70, 80, 52), bg='prev', cb=fxCallback, value=-1),
-#         Button((240, 70, 80, 52), bg='next', cb=fxCallback, value=1),
-#         Button((0, 67, 320, 91), bg='fx-none'),
-#         Button((0, 11, 320, 29), bg='fx')],
-#
-#         # Screen mode 7 is ISO
-#         [Button((0, 188, 320, 52), bg='done', cb=doneCallback),
-#         Button((0, 0, 80, 52), bg='prev', cb=settingCallback, value=-1),
-#         Button((240, 0, 80, 52), bg='next', cb=settingCallback, value=1),
-#         Button((0, 70, 80, 52), bg='prev', cb=isoCallback, value=-1),
-#         Button((240, 70, 80, 52), bg='next', cb=isoCallback, value=1),
-#         Button((0, 79, 320, 33), bg='iso-0'),
-#         Button((9, 134, 302, 26), bg='iso-bar'),
-#         Button((17, 157, 21, 19), bg='iso-arrow'),
-#         Button((0, 10, 320, 29), bg='iso')],
-#
-#         # Screen mode 8 is quit confirmation
-#         [Button((0, 188, 320, 52), bg='done', cb=doneCallback),
-#         Button((0, 0, 80, 52), bg='prev', cb=settingCallback, value=-1),
-#         Button((240, 0, 80, 52), bg='next', cb=settingCallback, value=1),
-#         Button((110, 60, 100, 120), bg='quit-ok', cb=quitCallback),
-#         Button((0, 10, 320, 35), bg='quit')]
-#         ]
-#     return buttons
+def printit():
+    global buttons
+    t = threading.Timer(30.0, printit)
+    t.daemon = True
+    t.start()
+
+    buttons = [
+    # Screen mode 0 is photo playback
+        [Button((0, 188, 320, 52), bg='done', cb=doneCallback),
+        Button((0, 0, 80, 52), bg='prev', cb=imageCallback, value=-1),
+        Button((240, 0, 80, 52), bg='next', cb=imageCallback, value=1),
+        Button((88, 70, 157, 102)),  # 'Working' label (when enabled)
+        Button((148, 129, 22, 22)),  # Spinner (when enabled)
+        Button((121, 0, 78, 52), bg='trash', cb=imageCallback, value=0)],
+
+        # Screen mode 1 is delete confirmation
+        [Button((0, 35, 320, 33), bg='delete'),
+        Button((32, 86, 120, 100), bg='yn', fg='yes',
+            cb=deleteCallback, value=True),
+        Button((168, 86, 120, 100), bg='yn', fg='no',
+            cb=deleteCallback, value=False)],
+
+        # Screen mode 2 is 'No Images'
+        [Button((0, 0, 320, 240), cb=doneCallback),  # Full screen = button
+        Button((0, 188, 320, 52), bg='done'),  # Fake 'Done' button
+        Button((0, 53, 320, 80), bg='empty')],  # 'Empty' message
+
+        # Screen mode 3 is viewfinder / snapshot
+        [Button((0, 188, 156, 52), bg='gear', cb=viewCallback, value=0),
+        Button((164, 188, 156, 52), bg='play', cb=viewCallback, value=1),
+        #Button((270, 0, 50, 30), bg=batt, value=3),
+        Button((0, 0, 320, 240), cb=viewCallback, value=2),
+        Button((88, 51, 157, 102)),  # 'Working' label (when enabled)
+        Button((148, 110, 22, 22))],  # Spinner (when enabled)
+
+        # Remaining screens are settings modes
+
+        # Screen mode 4 is storage settings
+        [Button((0, 188, 320, 52), bg='done', cb=doneCallback),
+        Button((0, 0, 80, 52), bg='prev', cb=settingCallback, value=-1),
+        Button((240, 0, 80, 52), bg='next', cb=settingCallback, value=1),
+        Button((2, 60, 100, 120), bg='radio3-1', fg='store-folder',
+            cb=storeModeCallback, value=0),
+        Button((110, 60, 100, 120), bg='radio3-0', fg='store-boot',
+            cb=storeModeCallback, value=1),
+        Button((218, 60, 100, 120), bg='radio3-0', fg='store-dropbox',
+            cb=storeModeCallback, value=2),
+        Button((0, 10, 320, 35), bg='storage')],
+
+        # Screen mode 5 is size settings
+        [Button((0, 188, 320, 52), bg='done', cb=doneCallback),
+        Button((0, 0, 80, 52), bg='prev', cb=settingCallback, value=-1),
+        Button((240, 0, 80, 52), bg='next', cb=settingCallback, value=1),
+        Button((2, 60, 100, 120), bg='radio3-1', fg='size-l',
+            cb=sizeModeCallback, value=0),
+        Button((110, 60, 100, 120), bg='radio3-0', fg='size-m',
+            cb=sizeModeCallback, value=1),
+        Button((218, 60, 100, 120), bg='radio3-0', fg='size-s',
+            cb=sizeModeCallback, value=2),
+        Button((0, 10, 320, 29), bg='size')],
+
+        # Screen mode 6 is graphic effect
+        [Button((0, 188, 320, 52), bg='done', cb=doneCallback),
+        Button((0, 0, 80, 52), bg='prev', cb=settingCallback, value=-1),
+        Button((240, 0, 80, 52), bg='next', cb=settingCallback, value=1),
+        Button((0, 70, 80, 52), bg='prev', cb=fxCallback, value=-1),
+        Button((240, 70, 80, 52), bg='next', cb=fxCallback, value=1),
+        Button((0, 67, 320, 91), bg='fx-none'),
+        Button((0, 11, 320, 29), bg='fx')],
+
+        # Screen mode 7 is ISO
+        [Button((0, 188, 320, 52), bg='done', cb=doneCallback),
+        Button((0, 0, 80, 52), bg='prev', cb=settingCallback, value=-1),
+        Button((240, 0, 80, 52), bg='next', cb=settingCallback, value=1),
+        Button((0, 70, 80, 52), bg='prev', cb=isoCallback, value=-1),
+        Button((240, 70, 80, 52), bg='next', cb=isoCallback, value=1),
+        Button((0, 79, 320, 33), bg='iso-0'),
+        Button((9, 134, 302, 26), bg='iso-bar'),
+        Button((17, 157, 21, 19), bg='iso-arrow'),
+        Button((0, 10, 320, 29), bg='iso')],
+
+        # Screen mode 8 is quit confirmation
+        [Button((0, 188, 320, 52), bg='done', cb=doneCallback),
+        Button((0, 0, 80, 52), bg='prev', cb=settingCallback, value=-1),
+        Button((240, 0, 80, 52), bg='next', cb=settingCallback, value=1),
+        Button((110, 60, 100, 120), bg='quit-ok', cb=quitCallback),
+        Button((0, 10, 320, 35), bg='quit')]
+        ]
+    return buttons
 
 
 def isoCallback(n): # Pass 1 (next ISO) or -1 (prev ISO)
@@ -338,88 +338,6 @@ icons = [] # This list gets populated at startup
 # declared for each settings screen, rather than a single reusable
 # set); trying to reuse those few elements just made for an ugly
 # tangle of code elsewhere.
-
-buttons = [
-  # Screen mode 0 is photo playback
-  [Button((  0,188,320, 52), bg='done' , cb=doneCallback),
-   Button((  0,  0, 80, 52), bg='prev' , cb=imageCallback, value=-1),
-   Button((240,  0, 80, 52), bg='next' , cb=imageCallback, value= 1),
-   Button(( 88, 70,157,102)), # 'Working' label (when enabled)
-   Button((148,129, 22, 22)), # Spinner (when enabled)
-   Button((121,  0, 78, 52), bg='trash', cb=imageCallback, value= 0)],
-
-  # Screen mode 1 is delete confirmation
-  [Button((  0,35,320, 33), bg='delete'),
-   Button(( 32,86,120,100), bg='yn', fg='yes',
-    cb=deleteCallback, value=True),
-   Button((168,86,120,100), bg='yn', fg='no',
-    cb=deleteCallback, value=False)],
-
-  # Screen mode 2 is 'No Images'
-  [Button((0,  0,320,240), cb=doneCallback), # Full screen = button
-   Button((0,188,320, 52), bg='done'),       # Fake 'Done' button
-   Button((0, 53,320, 80), bg='empty')],     # 'Empty' message
-
-  # Screen mode 3 is viewfinder / snapshot
-  [Button((  0,188,156, 52), bg='gear', cb=viewCallback, value=0),
-   Button((164,188,156, 52), bg='play', cb=viewCallback, value=1),
-   Button((  0,  0,320,240)           , cb=viewCallback, value=2),
-   Button(( 88, 51,157,102)),  # 'Working' label (when enabled)
-   Button((148, 110,22, 22))], # Spinner (when enabled)
-
-  # Remaining screens are settings modes
-
-  # Screen mode 4 is storage settings
-  [Button((  0,188,320, 52), bg='done', cb=doneCallback),
-   Button((  0,  0, 80, 52), bg='prev', cb=settingCallback, value=-1),
-   Button((240,  0, 80, 52), bg='next', cb=settingCallback, value= 1),
-   Button((  2, 60,100,120), bg='radio3-1', fg='store-folder',
-    cb=storeModeCallback, value=0),
-   Button((110, 60,100,120), bg='radio3-0', fg='store-boot',
-    cb=storeModeCallback, value=1),
-   Button((218, 60,100,120), bg='radio3-0', fg='store-dropbox',
-    cb=storeModeCallback, value=2),
-   Button((  0, 10,320, 35), bg='storage')],
-
-  # Screen mode 5 is size settings
-  [Button((  0,188,320, 52), bg='done', cb=doneCallback),
-   Button((  0,  0, 80, 52), bg='prev', cb=settingCallback, value=-1),
-   Button((240,  0, 80, 52), bg='next', cb=settingCallback, value= 1),
-   Button((  2, 60,100,120), bg='radio3-1', fg='size-l',
-    cb=sizeModeCallback, value=0),
-   Button((110, 60,100,120), bg='radio3-0', fg='size-m',
-    cb=sizeModeCallback, value=1),
-   Button((218, 60,100,120), bg='radio3-0', fg='size-s',
-    cb=sizeModeCallback, value=2),
-   Button((  0, 10,320, 29), bg='size')],
-
-  # Screen mode 6 is graphic effect
-  [Button((  0,188,320, 52), bg='done', cb=doneCallback),
-   Button((  0,  0, 80, 52), bg='prev', cb=settingCallback, value=-1),
-   Button((240,  0, 80, 52), bg='next', cb=settingCallback, value= 1),
-   Button((  0, 70, 80, 52), bg='prev', cb=fxCallback     , value=-1),
-   Button((240, 70, 80, 52), bg='next', cb=fxCallback     , value= 1),
-   Button((  0, 67,320, 91), bg='fx-none'),
-   Button((  0, 11,320, 29), bg='fx')],
-
-  # Screen mode 7 is ISO
-  [Button((  0,188,320, 52), bg='done', cb=doneCallback),
-   Button((  0,  0, 80, 52), bg='prev', cb=settingCallback, value=-1),
-   Button((240,  0, 80, 52), bg='next', cb=settingCallback, value= 1),
-   Button((  0, 70, 80, 52), bg='prev', cb=isoCallback    , value=-1),
-   Button((240, 70, 80, 52), bg='next', cb=isoCallback    , value= 1),
-   Button((  0, 79,320, 33), bg='iso-0'),
-   Button((  9,134,302, 26), bg='iso-bar'),
-   Button(( 17,157, 21, 19), bg='iso-arrow'),
-   Button((  0, 10,320, 29), bg='iso')],
-
-  # Screen mode 8 is quit confirmation
-  [Button((  0,188,320, 52), bg='done'   , cb=doneCallback),
-   Button((  0,  0, 80, 52), bg='prev'   , cb=settingCallback, value=-1),
-   Button((240,  0, 80, 52), bg='next'   , cb=settingCallback, value= 1),
-   Button((110, 60,100,120), bg='quit-ok', cb=quitCallback),
-   Button((  0, 10,320, 35), bg='quit')]
-]
 
 # Assorted utility functions -----------------------------------------------
 
@@ -637,7 +555,7 @@ pygame.mouse.set_cursor((8, 8), (0, 0), (0, 0, 0, 0, 0, 0, 0, 0), (0, 0, 0, 0, 0
 screen = pygame.display.set_mode((0,0), pygame.FULLSCREEN)
 
 # Init camera and set up default values
-camera            = picamera.PiCamera()
+camera = picamera.PiCamera()
 atexit.register(camera.close)
 camera.resolution = sizeData[sizeMode][1]
 #camera.crop       = sizeData[sizeMode][2]
@@ -650,16 +568,17 @@ for file in os.listdir(iconPath):
     icons.append(Icon(file.split('.')[0]))
 
 # Assign Icons to Buttons, now that they're loaded
-for s in buttons:        # For each screenful of buttons...
-  for b in s:            #  For each button on screen...
-    for i in icons:      #   For each icon...
-      if b.bg == i.name: #    Compare names; match?
-        b.iconBg = i     #     Assign Icon to Button
-        b.bg     = None  #     Name no longer used; allow garbage collection
-      if b.fg == i.name:
-        b.iconFg = i
-        b.fg     = None
+# for s in buttons:        # For each screenful of buttons...
+#   for b in s:            #  For each button on screen...
+#     for i in icons:      #   For each icon...
+#       if b.bg == i.name: #    Compare names; match?
+#         b.iconBg = i     #     Assign Icon to Button
+#         b.bg     = None  #     Name no longer used; allow garbage collection
+#       if b.fg == i.name:
+#         b.iconFg = i
+#         b.fg     = None
 
+buttons = printit()
 loadSettings() # Must come last; fiddles with Button/Icon states
 
 
