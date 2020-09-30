@@ -81,7 +81,7 @@ class Classifier:
       ordered = np.argpartition(-output, top_k)
       return [(i, output[i]) for i in ordered[:top_k]]
 
-class Button:
+# class Button:
 
 # Programme
 if __name__ == '__main__':
