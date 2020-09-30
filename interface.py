@@ -13,7 +13,7 @@ from __future__ import division
 from __future__ import print_function
 
 import atexit
-import cPickle as pickle
+import pickle
 import errno
 import fnmatch
 import io
