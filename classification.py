@@ -78,8 +78,7 @@ def main():
       for _ in camera.capture_continuous(
           stream, format='jpeg', use_video_port=True):
         stream.seek(0)
-        image = Image.open(stream).convert('RGB').resize((width, height),
-                                                         Image.ANTIALIAS)
+        image = Image.open(stream).convert('RGB').resize((width, height), Image.ANTIALIAS)
         start_time = time.time()
         results = classify_image(interpreter, image)
         elapsed_ms = (time.time() - start_time) * 1000
