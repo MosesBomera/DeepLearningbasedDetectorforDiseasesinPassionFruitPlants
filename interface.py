@@ -34,14 +34,37 @@ import numpy as np
 from PIL import Image
 from tflite_runtime.interpreter import Interpreter
 
+# Kind of settings
+storePath = r'/home/pi/katundaphotos'
+
+
 # Main function
 def main():
+    # 1. Take picture
     camera = picamera.PiCamera()
     camera.start_preview()
     sleep(10)
     camera.capture('/home/pi/Desktop/image.jpg')
     camera.stop_preview()
 
+    # 2. Display saved picture using pygame.
+    pygame.init()
+    fpsClock = pygame.time.Clock()
+    surface = pygame.display.set_mode((320, 240))
+    black = (0, 0, 0)
+    image = pygame.image.load('/home/pi/Desktop/image.jpg')
+
+    while True:
+        surface.fill(black)
+        surface.blit(image, (0, 0))
+
+        for event in pygame.event.get():
+            if event.type == QUIT:
+                pygame.quit()
+                sys.exit()
+
+        pygame.display.update()
+        fpsClock.tick(30)
 
 class Utils:
     # Utility functions
