@@ -16,6 +16,15 @@ from threading import Thread
 from PIL import Image
 from tflite_runtime.interpreter import Interpreter
 
+CONFIDENCE_THRESHOLD = 0.5   # at what confidence level do we say we detected a thing
+PERSISTANCE_THRESHOLD = 0.25  # what percentage of the time we have to have seen a thing
+
+os.environ['SDL_FBDEV'] = "/dev/fb1"
+os.environ['SDL_VIDEODRIVER'] = "fbcon"
+
+logging.basicConfig()
+logging.getLogger().setLevel(logging.INFO)
+
 class PiCameraStream(object):
     """
       Continuously capture video frames, and optionally render with an overlay
@@ -108,15 +117,6 @@ class Classifier:
 
       ordered = np.argpartition(-output, top_k)
       return [(i, output[i]) for i in ordered[:top_k]]
-
-CONFIDENCE_THRESHOLD = 0.5   # at what confidence level do we say we detected a thing
-PERSISTANCE_THRESHOLD = 0.25  # what percentage of the time we have to have seen a thing
-
-os.environ['SDL_FBDEV'] = "/dev/fb1"
-os.environ['SDL_VIDEODRIVER'] = "fbcon"
-
-logging.basicConfig()
-logging.getLogger().setLevel(logging.INFO)
 
 # initialize the display
 pygame.init()
