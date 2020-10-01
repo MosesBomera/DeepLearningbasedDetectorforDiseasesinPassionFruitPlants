@@ -13,6 +13,9 @@ from picamera import PiCamera
 import numpy as np
 from threading import Thread
 
+from PIL import Image
+from tflite_runtime.interpreter import Interpreter
+
 class PiCameraStream(object):
     """
       Continuously capture video frames, and optionally render with an overlay
@@ -168,7 +171,7 @@ def main():
         img = pygame.image.frombuffer(previewframe, capture_manager.camera.resolution, 'RGB')
         # draw it!
         screen.blit(img, (0, 0))
-        image = frame.resize((width, height), Image.ANTIALIAS)
+        image = Image.open(frame).convert('RGB').resize((width, height), Image.ANTIALIAS)
 
         timestamp = time.monotonic()
         # Prediction
