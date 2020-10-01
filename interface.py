@@ -21,6 +21,7 @@ import os
 import os.path
 import picamera
 import pygame
+import pygame.camera
 import stat
 import threading
 import time
@@ -37,6 +38,11 @@ from tflite_runtime.interpreter import Interpreter
 # Kind of settings
 storePath = r'/home/pi/katundaphotos'
 
+# Init framebuffer/touchscreen environment variables
+os.putenv('SDL_VIDEODRIVER', 'fbcon')
+os.putenv('SDL_FBDEV'      , '/dev/fb1')
+os.putenv('SDL_MOUSEDRV'   , 'TSLIB')
+os.putenv('SDL_MOUSEDEV'   , '/dev/input/touchscreen')
 
 # Main function
 def main():
@@ -50,7 +56,7 @@ def main():
     # 2. Display saved picture using pygame.
     pygame.init()
     fpsClock = pygame.time.Clock()
-    surface = pygame.display.set_mode((320, 240))
+    surface = pygame.display.set_mode((0,0), pygame.FULLSCREEN)
     black = (0, 0, 0)
     image = pygame.image.load('/home/pi/Desktop/image.jpg')
 
@@ -65,6 +71,7 @@ def main():
 
         pygame.display.update()
         fpsClock.tick(30)
+
 
 class Utils:
     # Utility functions
