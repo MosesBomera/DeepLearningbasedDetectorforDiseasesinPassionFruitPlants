@@ -123,7 +123,7 @@ capture_manager = PiCameraStream(resolution=(max(320, screen.get_width()), max(2
 last_seen = [None] * 10
 last_spoken = None
 
-def main(args):
+def main():
     global last_spoken
 
     parser = argparse.ArgumentParser(
