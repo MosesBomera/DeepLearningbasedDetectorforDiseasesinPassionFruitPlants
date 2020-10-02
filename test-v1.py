@@ -70,13 +70,13 @@ def main(args):
 
     pygame.mouse.set_visible(False)
     screen.fill((0,0,0))
-    try:
-        splash = pygame.image.load(os.path.dirname(sys.argv[0])+'/icons/passion-fruit.bmp')
-        screen.blit(splash, ((screen.get_width() / 2) - (splash.get_width() / 2),
-                    (screen.get_height() / 2) - (splash.get_height() / 2)))
-    except pygame.error:
-        pass
-    pygame.display.update()
+    # try:
+    #     splash = pygame.image.load(os.path.dirname(sys.argv[0])+'/icons/passion-fruit.bmp')
+    #     screen.blit(splash, ((screen.get_width() / 2) - (splash.get_width() / 2),
+    #                 (screen.get_height() / 2) - (splash.get_height() / 2)))
+    # except pygame.error:
+    #     pass
+    # pygame.display.update()
 
     # use the default font
     smallfont = pygame.font.Font(None, 24)
