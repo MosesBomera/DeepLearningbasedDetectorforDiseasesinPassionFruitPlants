@@ -37,7 +37,7 @@ def set_input_tensor(interpreter, image):
   input_tensor[:, :] = image
 
 
-def classify_image(interpreter, image, top_k=6):
+def classify_image(interpreter, image, top_k=5):
   """Returns a sorted array of classification results."""
   set_input_tensor(interpreter, image)
   interpreter.invoke()
@@ -84,6 +84,7 @@ def main(args):
     bigfont = pygame.font.Font(None, 48)
 
     labels = load_labels(args.labels)
+    logging.info(labels)
 
     interpreter = Interpreter(args.model)
     interpreter.allocate_tensors()
