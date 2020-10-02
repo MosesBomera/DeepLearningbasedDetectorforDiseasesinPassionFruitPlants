@@ -43,7 +43,7 @@ def set_input_tensor(interpreter, image):
   input_tensor[:, :] = image
 
 
-def classify_image(interpreter, image, top_k=1):
+def classify_image(interpreter, image, top_k=6):
   """Returns a sorted array of classification results."""
   set_input_tensor(interpreter, image)
   interpreter.invoke()
