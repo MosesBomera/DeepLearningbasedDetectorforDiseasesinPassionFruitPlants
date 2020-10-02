@@ -7,17 +7,15 @@ import os
 import sys
 import numpy as np
 import subprocess
+from capture import PiCameraStream
+from PIL import Image
+from tflite_runtime.interpreter import Interpreter
 
 CONFIDENCE_THRESHOLD = 0.5   # at what confidence level do we say we detected a thing
 PERSISTANCE_THRESHOLD = 0.25  # what percentage of the time we have to have seen a thing
 
 os.environ['SDL_FBDEV'] = "/dev/fb1"
 os.environ['SDL_VIDEODRIVER'] = "fbcon"
-
-# App
-from capture import PiCameraStream
-from PIL import Image
-from tflite_runtime.interpreter import Interpreter
 
 logging.basicConfig()
 logging.getLogger().setLevel(logging.INFO)
@@ -108,7 +106,7 @@ def main(args):
         prediction = classify_image(interpreter, frame)
         logging.info(prediction)
         delta = time.monotonic() - timestamp
-        logging.info("%s inference took %d ms, %0.1f FPS" % ("TFLite" if args.tflite else "TF", delta * 1000, 1 / delta))
+        logging.info("%s inference took %d ms, %0.1f FPS" % (delta * 1000, 1 / delta))
         print(last_seen)
 
         # add FPS on top corner of image
