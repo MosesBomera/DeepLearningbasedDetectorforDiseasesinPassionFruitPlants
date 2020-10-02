@@ -105,7 +105,7 @@ def main(args):
 
         timestamp = time.monotonic()
         prediction = classify_image(interpreter, frame)
-        logging.info(prediction)
+        logging.info(f"Predictions: {prediction}")
         delta = time.monotonic() - timestamp
         logging.info("Inference took %d ms, %0.1f FPS" % (delta * 1000, 1 / delta))
         print(last_seen)
