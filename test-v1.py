@@ -106,7 +106,7 @@ def main(args):
         prediction = classify_image(interpreter, frame)
         logging.info(prediction)
         delta = time.monotonic() - timestamp
-        logging.info("%s inference took %d ms, %0.1f FPS" % (delta * 1000, 1 / delta))
+        logging.info("Inference took %d ms, %0.1f FPS" % (delta * 1000, 1 / delta))
         print(last_seen)
 
         # add FPS on top corner of image
