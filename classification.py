@@ -24,10 +24,13 @@ import io
 import time
 import numpy as np
 import picamera
+import logging
 
 from PIL import Image
 from tflite_runtime.interpreter import Interpreter
 
+logging.basicConfig()
+logging.getLogger().setLevel(logging.INFO)
 
 def load_labels(path):
   with open(path, 'r') as f:
@@ -81,6 +84,7 @@ def main():
         image = Image.open(stream).convert('RGB').resize((width, height), Image.ANTIALIAS)
         start_time = time.time()
         results = classify_image(interpreter, image)
+        logging.info(results)
         elapsed_ms = (time.time() - start_time) * 1000
         label_id, prob = results[0]
         stream.seek(0)
