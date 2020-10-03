@@ -139,7 +139,7 @@ def main(args):
                         break
                 else:
                     detecttextfont = smallfont # well, we'll do our best
-                detecttext_color = (0, 255, 0) if persistant_obj else (255, 255, 255)
+                detecttext_color = (0, 0, 255) if persistant_obj else (255, 255, 255)
                 detecttext_surface = detecttextfont.render(detecttext, True, detecttext_color)
                 detecttext_position = (screen.get_width()//2,
                                        screen.get_height() - detecttextfont.size(detecttext)[1])
