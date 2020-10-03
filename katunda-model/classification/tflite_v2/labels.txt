@@ -1,7 +1,0 @@
-Background
-Fruit_BrownSpot
-Fruit_Healthy
-Fruit_Woodiness
-Leaf_BrownSpot
-Leaf_Healthy
-Leaf_Woodiness
