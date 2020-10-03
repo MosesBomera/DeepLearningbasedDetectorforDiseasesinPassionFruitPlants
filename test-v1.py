@@ -24,7 +24,7 @@ logging.getLogger().setLevel(logging.INFO)
 pygame.init()
 screen = pygame.display.set_mode((0,0), pygame.FULLSCREEN)
 
-capture_manager = PiCameraStream(resolution=(max(512, screen.get_width()), max(512, screen.get_height())), rotation=180, preview=False)
+capture_manager = PiCameraStream(resolution=(512, 512), rotation=180, preview=False)
 
 def load_labels(path):
   with open(path, 'r') as f:
