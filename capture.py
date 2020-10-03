@@ -56,7 +56,7 @@ class PiCameraStream(object):
                 return
 
     def read(self):
-        return self.frame[0:224, 48:272, :]  # crop the frame
+        return self.frame # crop the frame
 
     def stop(self):
         self.stopped = True
