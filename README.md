@@ -1,2 +1,2 @@
 # katunda-interface
-This repository contains the scripts that supportrunning a trained Katunda model (Brownspot Disease Detector) on a Raspberry Pi.
+Python scripts that support running a trained Katunda model (Brownspot Disease Detector (efficientdet)) on a Raspberry Pi platfotm.
