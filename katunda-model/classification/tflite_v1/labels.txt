@@ -1,4 +1,0 @@
-background
-brownspot
-healthy
-woodiness
